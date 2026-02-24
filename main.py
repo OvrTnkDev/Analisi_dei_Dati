@@ -5,7 +5,7 @@ import os
 FILE_PATH1 = r"dataset/random1d.csv"
 FILE_PATH2 = r"dataset/random2d.csv"
 
-# FUNZIONI FILE 
+# FUNZIONI FILE  write, read, append
 def w_file(filepath, data):
     with open(filepath, 'w') as f:
         for item in data:
@@ -32,7 +32,7 @@ w_file(FILE_PATH2, random_2d)
 
 # Conversione dati letti in array
 def convert_to_array(data_lines):
-    # Se contiene più valori per riga → 2D
+    # Se contiene più valori per riga ovvero array 2D
     if "[" in data_lines[0]:
         matrix = []
         for row in data_lines:
@@ -67,9 +67,11 @@ def analyze_1D(arr):
         results["indice_min"] = np.argmin(arr)
         results["indice_max"] = np.argmax(arr)
         results["mediana"] = np.percentile(arr, 50)
+        # Chiede all'utente un valore numerico da inserire
         x = float(input("Valore per searchsorted: "))
+        # Ordina l'array e trova la posizione in cui inserire x
+        # per mantenere l'ordine crescente
         results["posizione_inserimento"] = np.searchsorted(np.sort(arr), x)
-
     return results
 
 
