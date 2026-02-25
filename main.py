@@ -21,18 +21,9 @@ def u_file(filepath, data):
         for item in data:
             f.write(f"{item}\n")
 
-# Creazioni file iniziali
-os.makedirs("dataset", exist_ok=True)
-
-random_numbers = np.random.rand(100)
-w_file(FILE_PATH1, random_numbers)
-
-random_2d = np.random.rand(20, 4)
-w_file(FILE_PATH2, random_2d)
-
 # Conversione dati letti in array
 def convert_to_array(data_lines):
-    # Se contiene più valori per riga ovvero array 2D
+    # Se contiene più valori per riga ovvero array 2D, Rimuove [ e ], Divide riga con .split() e converte tutto in float
     if "[" in data_lines[0]:
         matrix = []
         for row in data_lines:
@@ -40,7 +31,7 @@ def convert_to_array(data_lines):
             numbers = [float(x) for x in clean_row.split()]
             matrix.append(numbers)
         return np.array(matrix)
-    else:
+    else: # caso una riga, converte ogni elem nella riga in float e crea array 
         return np.array([float(x) for x in data_lines])
 
 # analisi matrice 1D
@@ -100,6 +91,16 @@ def analyze_2D(matrix):
     
     return results
 
+
+# Creazioni file iniziali
+#os.makedirs("dataset", exist_ok=True)
+
+#random_numbers = np.random.rand(100)
+#w_file(FILE_PATH1, random_numbers)
+
+#random_2d = np.random.rand(20, 4)
+#w_file(FILE_PATH2, random_2d)
+
 # MAIN 
 while True:
     filepath = input("\nInserisci path file (es: dataset/random1d.csv): ")
@@ -130,3 +131,4 @@ while True:
     repeat = input("\nVuoi ripetere? (s/n): ")
     if repeat.lower() != "s":
         break
+    

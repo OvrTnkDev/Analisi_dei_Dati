@@ -1,0 +1,8 @@
+min: 0.01271147370661696
+max: 0.9988769446264621
+media: 0.5229694548585718
+deviazione_std: 0.2970648538594241
+indice_min: 97
+indice_max: 69
+mediana: 0.5391201832091881
+posizione_inserimento: 100
